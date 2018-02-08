@@ -1,0 +1,26 @@
+<div class="row" [class.deleting]="isDeleting">
+	<div class="col-9">
+	<div class="row">
+			<div class="col-3">Usuario: </div><div class="col-9"> {{usuario.usuario}}</div>
+		</div>
+		<div class="row">
+			<div class="col-3">Nombre: </div><div class="col-9"> {{usuario.nombre}}</div>
+		</div>
+		<div class="row">
+			<div class="col-3">Apellido1: </div><div class="col-9"> {{usuario.apellido1}}</div>
+		</div>
+		<div class="row">
+			<div class="col-3">Correo: </div><div class="col-9"> {{usuario.correo}}</div>
+		</div>
+	</div>
+	<div class="col-3 actions">
+		<div class="row">
+			<div class="col-12 text-center">
+				<button type="button" class="btn btn-primary" (click)="editar()">Editar</button>
+			</div>
+			<div class="col-12 text-center">
+				<button type="button" class="btn btn-danger" (click)="borrar()"><span *ngIf="isDeleting">...</span><span *ngIf="!isDeleting">Eliminar</span></button>
+			</div>
+		</div>
+	</div>
+</div>

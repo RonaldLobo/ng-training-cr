@@ -1,0 +1,59 @@
+<form [formGroup]="usuarioForm" (ngSubmit)="onSubmit()" novalidate>
+	<div class="form-group">
+		<label class="center-block">Usuario
+			<input class="form-control" formControlName="usuario" [attr.disabled]="isEditing?'':null">
+		</label>
+		<div *ngIf="!usuarioForm.controls['usuario'].valid && (usuarioForm.controls['usuario'].dirty || usuarioForm.controls['usuario'].touched)" class="alert alert-danger">
+			<div *ngIf="usuarioForm.controls['usuario'].errors.required">
+				El usuario es requerido
+			</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="center-block">Nombre
+			<input class="form-control" formControlName="nombre">
+		</label>
+		<div *ngIf="!usuarioForm.controls['nombre'].valid && (usuarioForm.controls['nombre'].dirty || usuarioForm.controls['nombre'].touched)" class="alert alert-danger">
+			<div *ngIf="usuarioForm.controls['nombre'].errors.required">
+				El nombre es requerido
+			</div>
+			<div *ngIf="usuarioForm.controls['nombre'].errors.minlength">
+				El nombre debe tener al menos 2 digitos.
+			</div>
+			<div *ngIf="usuarioForm.controls['nombre'].errors.maxlength">
+				El nombre debe tener al maximo 3 digitos.
+			</div>
+			<div *ngIf="usuarioForm.controls['nombre'].errors.forbiddenName">
+				El nombre no puede ser Juan.
+			</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="center-block">Apellido1
+			<input class="form-control" formControlName="apellido1">
+		</label>
+		<div *ngIf="usuarioForm.controls['apellido1'].errors && (usuarioForm.controls['apellido1'].dirty || usuarioForm.controls['apellido1'].touched)" class="alert alert-danger">
+			<div *ngIf="usuarioForm.controls['apellido1'].errors.required">
+				El Apellido1 es requerido
+			</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="center-block">Correo
+			<input class="form-control" formControlName="correo">
+		</label>
+		<div *ngIf="usuarioForm.controls['correo'].invalid && (usuarioForm.controls['correo'].dirty || usuarioForm.controls['correo'].touched)" class="alert alert-danger">
+			<div *ngIf="usuarioForm.controls['correo'].errors.required">
+				El Correo es requerido
+			</div>
+			<div *ngIf="usuarioForm.controls['correo'].errors.patternInvalid">
+				El Correo es invalido
+			</div>
+		</div>
+	</div>
+	<div>
+		<button type="submit"
+		[disabled]="usuarioForm.invalid " class="btn btn-success"><span *ngIf="!isEditing">Agregar</span><span *ngIf="isEditing">Editar</span></button> &nbsp;
+		<button type="reset" (click)="revert()" class="btn btn-danger">Revert</button>
+	</div>
+</form>

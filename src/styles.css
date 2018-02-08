@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+
+ul {
+  list-style-type: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.page {
+	height: 100vh;
+	border-right: 2px solid gray;
+    border-left: 2px solid gray;
+}

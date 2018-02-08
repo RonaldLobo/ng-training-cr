@@ -1,0 +1,18 @@
+<div class="productos">
+	<div class="page-title row">
+		<h2 class="col-5">Productos</h2>
+	</div>
+	<div class="products row">
+		<ul class="col-6">
+			<li *ngFor="let producto of productos" class="row producto-display">
+				<app-producto-display [producto]='producto' (borrarProducto)="borrarProducto($event)" (editarProducto)="editarProducto($event)" class="col-12 card"></app-producto-display>
+			</li>
+		</ul>	
+		<ul class="col-4 offset-1">
+			<app-producto-agregar (agregarProducto)="agregarProducto($event)" (editarProducto)="editarProductoSave($event)" [selectedProduct]="selectedProduct" [canAdd]='!loading'></app-producto-agregar>
+			<div *ngIf="loading">
+				loading...
+			</div>
+		</ul>
+	</div>
+</div>
