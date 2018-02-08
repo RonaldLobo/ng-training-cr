@@ -11,7 +11,8 @@
     "e2e": "ng e2e",
     "start": "node server.js",
     "test": "mocha",
-    "postinstall": "ng build && node server.js"
+    "heroku-postbuild": "cd ANGULAR_APP_FOLDER && npm install",
+    "postinstall": "ng build --aot -prod"
   },
   "private": true,
   "dependencies": {
@@ -34,11 +35,12 @@
     "jsonwebtoken": "^8.1.0",
     "mongodb": "^3.0.1",
     "require-dir-all": "^0.4.12",
-    "server-destroy": "^1.0.1"
-  },
-  "devDependencies": {
+    "server-destroy": "^1.0.1",
     "@angular/cli": "1.6.7",
     "@angular/compiler-cli": "^5.2.0",
+    "typescript": "~2.5.3"
+  },
+  "devDependencies": {
     "@angular/language-service": "^5.2.0",
     "@types/jasmine": "~2.8.3",
     "@types/jasminewd2": "~2.0.2",
@@ -53,7 +55,10 @@
     "karma-jasmine-html-reporter": "^0.2.2",
     "protractor": "~5.1.2",
     "ts-node": "~4.1.0",
-    "tslint": "~5.9.1",
-    "typescript": "~2.5.3"
-  }
+    "tslint": "~5.9.1"
+  },
+  "engines": {
+      "node": "8.9.4",
+      "npm": "5.6.0"
+    }
 }
