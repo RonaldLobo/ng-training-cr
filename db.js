@@ -3,16 +3,20 @@
 
 var MongoClient = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectId;
-var url = "mongodb://localhost:27017/";
+// var url = "mongodb://localhost:27017/";
+var url = "mongodb://user_heroku_training:user_heroku_training@ds229878.mlab.com:29878/heroku_0vff4c09";
 
 MongoClient.connect(url, function(err, db) {
-    if (err) throw err;
+    if (err) {
+    	console.log('has an error');
+    	throw err;
+    }
     addCollections(db);
 });
 
 
 function addCollections(db){
-	var dbase = db.db("ngtraining"); //here
+	var dbase = db.db("heroku_0vff4c09"); //here
 	dbase.createCollection("products");
 	dbase.createCollection("users",function(err, res) {
 	    if (err) throw err;
