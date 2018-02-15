@@ -13,7 +13,7 @@ var server;
 var enableDestroy = require('server-destroy');
 var configuration = require(__base + 'server/configuration');
 var routes = require(__base + '/server/routes');
-var port = 8080;
+var port = process.env.PORT || 8080;
 
 configuration.express(app);
 app.use('/', routes);
